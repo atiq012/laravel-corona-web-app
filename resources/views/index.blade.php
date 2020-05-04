@@ -37,27 +37,15 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($data as $item)
                 <tr>
-                  <td>Rajpara</td>
-                  <td>900</td>
-                  <td>665</td>
-                  <td>177</td>
-                  <td>2</td>
+                  <td>{{$item->thana}}</td>
+                  <td>{{$item->infected}}</td>
+                  <td>{{$item->new_infected}}</td>
+                  <td>{{$item->recover}}</td>
+                  <td>{{$item->deaths}}</td>
                 </tr>
-                <tr>
-                  <td>Boalia</td>
-                  <td>970</td>
-                  <td>675</td>
-                  <td>77</td>
-                  <td>12</td>
-                </tr>
-                <tr>
-                  <td>Shah Makhdum</td>
-                  <td>70</td>
-                  <td>75</td>
-                  <td>49</td>
-                  <td>2</td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

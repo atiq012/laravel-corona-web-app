@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::resource('index','InformationController');
-
+Route::resource('dashboard','DashboardController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
