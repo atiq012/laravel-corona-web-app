@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Information;
 
-class InformationController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class InformationController extends Controller
      */
     public function index()
     {
-        return view('index')->with('data',Information::all());
+        return view('dashboard.index')->with('data',Information::all());
     }
 
     /**
@@ -25,7 +25,7 @@ class InformationController extends Controller
      */
     public function create()
     {
-        //
+        return view ('dashboard.create');
     }
 
     /**
@@ -36,7 +36,18 @@ class InformationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Information::create([
+            'thana' => $request->Thana,
+            'infected' => $request->Infected,
+            'new_infected' => $request->New_Infected,
+            'recover' => $request->Recovered,
+            'deaths' => $request->Deaths
+
+        ]);
+        session()->flash('success','Information Added Successfully');
+        
+        return redirect(route('dashboard.index'));
+
     }
 
     /**
@@ -56,9 +67,9 @@ class InformationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Information $dashboard)
     {
-        //
+        return view('dashboard.edit')->with('item',$dashboard);
     }
 
     /**
@@ -68,9 +79,20 @@ class InformationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Information $dashboard)
     {
-        //
+        $dashboard->update([
+            'thana' => $request->Thana,
+            'infected' => $request->Infected,
+            'new_infected' => $request->New_Infected,
+            'recover' => $request->Recovered,
+            'deaths' => $request->Deaths
+
+        ]);
+        $dashboard->save();
+        session()->flash('success','Information Updated Successfully');
+        
+        return redirect(route('dashboard.index'));
     }
 
     /**
