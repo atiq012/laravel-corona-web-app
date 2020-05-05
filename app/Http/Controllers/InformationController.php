@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Information;
 
+use Illuminate\Support\Facades\DB;
+
 class InformationController extends Controller
 {
     /**
@@ -15,7 +17,14 @@ class InformationController extends Controller
      */
     public function index()
     {
-        return view('index')->with('data',Information::all());
+        $total_infected = DB::table('information')->sum('infected');
+        $total_dead = DB::table('information')->sum('deaths');
+        $data = Information::all();
+        return view('index',[
+            'data'=>$data,
+            'total_infected'=>$total_infected,
+            'total_dead'=>$total_dead
+            ]);
     }
 
     /**

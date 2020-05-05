@@ -8,49 +8,68 @@
     <link rel="stylesheet" href="./css/style.css" />
     <title>Covid19</title>
   </head>
+
   <body>
-    <nav>
-      <div class="hamburger">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-      </div>
-      
-      <ul class="nav-links">
-        <li class="logo">Covid19</li>
-        <li class="links"><a href="/index">Dashboard</a></li>
-        <li class="links"><a href="#">About Us</a></li>
-        <li class="links"><a href="/login">Log in</a></li>
-      </ul>
-    </nav>
-    <div class="container my-2">
+      <nav>
+        <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+        
+        <ul class="nav-links">
+          <li class="logo">Covid19</li>
+          <li class="links"><a href="/">Dashboard</a></li>
+          <li class="links"><a href="#">About Us</a></li>
+          <li class="links"><a href="/login">Log in</a></li>
+        </ul>
+      </nav>
+      <div class="container my-2">
         <div class="wrapper">
             <div class="table-item">
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Thana</th>
-                  <th scope="col">Infected</th>
-                  <th scope="col">New Infected</th>
-                  <th scope="col">Recovered</th>
-                  <th scope="col">Deaths</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($data as $item)
-                <tr>
-                  <td>{{$item->thana}}</td>
-                  <td>{{$item->infected}}</td>
-                  <td>{{$item->new_infected}}</td>
-                  <td>{{$item->recover}}</td>
-                  <td>{{$item->deaths}}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+              <table class="table table-hover">
+                  <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Thana</th>
+                        <th scope="col">Infected</th>
+                        <th scope="col">New Infected</th>
+                        <th scope="col">Recovered</th>
+                        <th scope="col">Deaths</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @foreach ($data as $item)
+                      <tr>
+                        <td>{{$item->thana}}</td>
+                        <td>{{$item->infected}}</td>
+                        <td>{{$item->new_infected}}</td>
+                        <td>{{$item->recover}}</td>
+                        <td>{{$item->deaths}}</td>
+                      </tr>
+                      @endforeach
+                  </tbody>
+              </table>
+          </div>
         </div>
-    </div>
+        <div class="row">
+          <div class="col-4">
+            <table class="table table-sm">
+              <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Total Infected</th>
+                    <th scope="col">Total Death</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td class="table-warning">{{$total_infected}}</td>
+                    <td class="table-danger">{{$total_dead}}</td>
+                  </tr>
+              </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
     <script src="./js/custom.js"></script>
   </body>
 </html>
