@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::resource('index','InformationController');
+Route::get('/','InformationController@index');
 Route::resource('dashboard','DashboardController');
 Auth::routes();
 
